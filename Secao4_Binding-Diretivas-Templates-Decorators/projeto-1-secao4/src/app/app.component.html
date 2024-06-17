@@ -1,4 +1,4 @@
-<input id="meu-input" [value]="inputText" [type]="inputType" [disabled]="isDisabled">
+<input id="meu-input" [value]="inputText" [type]="inputType" [disabled]="isDisabled" (input)="handleInputEvent($event)">
 
 <br />
 
@@ -6,6 +6,7 @@
 <button (click)="disableInput()">Desabilitar</button>
 
 <br />
+
 <button (click)="setPasswordTypeInput()">Senha</button>
 <button (click)="setTextTypeInput()">Texto</button>
 
