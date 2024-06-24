@@ -6,7 +6,22 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  buttonClicked() {
-    console.log('Button CLicked');
+  // buttonClicked() {
+  //   console.log('Button CLicked');
+  // }
+
+  cardWhite = {
+    planType: 'Completo',
+    planPrice: 200,
+  }
+
+  cardOrange = {
+    planType: 'Simples',
+    planPrice: 100,
+  }
+
+  onCardButtonClicked() {
+    console.log('onCardButtonClicked');
+    //chamada http
   }
 }
