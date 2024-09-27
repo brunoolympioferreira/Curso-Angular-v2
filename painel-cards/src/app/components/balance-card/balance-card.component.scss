@@ -4,23 +4,9 @@
         align-items: center;
 
         p {
+            margin-left: auto;
             font-size: 20px;
         }
-    }
-
-    &__header-title {
-        display: flex;
-        align-items: center;
-        margin-right: auto;
-
-        h1 {
-            font-size: 20px;
-        }
-    }
-
-    &__header-icon {
-        width: 40px;
-        margin-right: 10px;
     }
 
     &__content-summary {
