@@ -1,5 +1,19 @@
 Nome do Usuário: <b>{{user.nome | truncate : 2}}</b>
-
 <br />
-
 Status do Usuário: <b>{{ user.status | userStatus }}</b>
+<br>
+<h1>Formato ISO8601</h1>
+<b>Data convertida para região: {{minhaData | date : 'full'}}</b>
+<br>
+<b>Data UTC-0: {{minhaData | date : 'full' : '+0000'}}</b>
+<br>
+
+<h1>Formato TimeStamp</h1>
+Timestamp para região: {{1729890000000 | date : 'full'}}
+<br>
+Timestamp UTC-0: {{1729890000000 | date : 'full' : '+0000'}}
+
+<h1>Formato Date OBJ</h1>
+<b>Data convertidada para região: </b> {{minhaDataObj | date : 'full'}}
+<br>
+<b>Data UTC-0</b> {{minhaDataObj | date: 'full' : '+0000'}}
