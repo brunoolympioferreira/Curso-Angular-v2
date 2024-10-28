@@ -17,3 +17,40 @@ Timestamp UTC-0: {{1729890000000 | date : 'full' : '+0000'}}
 <b>Data convertidada para região: </b> {{minhaDataObj | date : 'full'}}
 <br>
 <b>Data UTC-0</b> {{minhaDataObj | date: 'full' : '+0000'}}
+
+<!-- 
+"Hoje é Saturday dia 21 de October de 2023":
+"Hoje é Saturday dia 21 de October de 2023 às 18:00":
+"Hoje é Saturday dia 21 de October de 2023 às 18:00 GMT-03:00":
+"Hoje é Saturday dia 21 de October de 2023 às 21:00 GMT+00:00":
+"Data: 21/10/2023 Hora: 18:00 PM": 
+-->
+
+<h1>Formatações:</h1>
+Curto: {{'2024-10-28T21:00:00.000Z' | date : 'short'}} <br>
+Medio: {{'2024-10-28T21:00:00.000Z' | date : 'medium'}} <br>
+Longo: {{'2024-10-28T21:00:00.000Z' | date : 'long'}} <br>
+Completo: {{'2024-10-28T21:00:00.000Z' | date : 'full'}} <br> <br>
+
+<b>"Hoje é Saturday dia 21 de October de 2023":</b>
+<p>{{ '2023-10-21T21:00:00.000Z' | date : "'Hoje é' EEEE 'dia' dd 'de' MMMM 'de' YYYY" }}</p>
+
+<br /><br />
+
+<b>"Hoje é Saturday dia 21 de October de 2023 às 18:00":</b>
+<p>{{ '2023-10-21T21:00:00.000Z' | date : "'Hoje é' EEEE 'dia' dd 'de' MMMM 'de' YYYY 'às' HH:mm" }}</p>
+
+<br /><br />
+
+<b>"Hoje é Saturday dia 21 de October de 2023 às 18:00 GMT-03:00":</b>
+<p>{{ '2023-10-21T21:00:00.000Z' | date : "'Hoje é' EEEE 'dia' dd 'de' MMMM 'de' YYYY 'às' HH:mm zzzz" }}</p>
+
+<br /><br />
+
+<b>"Hoje é Saturday dia 21 de October de 2023 às 21:00 GMT+00:00":</b>
+<p>{{ '2023-10-21T21:00:00.000Z' | date : "'Hoje é' EEEE 'dia' dd 'de' MMMM 'de' YYYY 'às' HH:mm zzzz" : '+0000' }}</p>
+
+<br /><br />
+
+<b>"Data: 21/10/2023 Hora: 18:00 PM":</b>
+<p>{{ '2023-10-21T21:00:00.000Z' | date : "'Data:' dd/MM/YYYY 'Hora:' HH:mm a" }}</p>
