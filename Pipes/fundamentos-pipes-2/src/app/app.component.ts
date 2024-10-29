@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'fundamentos-pipes-2';
+  ngOnInit() {
+    const numero = 1200.99;
+    console.log(numero);
+  }
 }
