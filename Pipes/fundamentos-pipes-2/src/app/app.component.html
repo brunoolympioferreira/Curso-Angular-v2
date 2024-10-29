@@ -1,3 +1,29 @@
 {{ 1234.3 | number }} <br> <br>
 
 {{ 1234.3 | number : undefined : 'en-US' }}
+
+<h1>Currency Pipe</h1>
+{{ 1200.99 | currency : 'BRL' }} <br />
+
+{{ 1200.99 | currency : 'BRL' : 'code' }} <br />
+{{ 1200.99 | currency : 'BRL' : 'symbol' }} <br />
+{{ 1200.99 | currency : 'BRL' : 'symbol-narrow' }} <br />
+{{ 1200.99 | currency : 'BRL' : 'TESTE' }} <br />
+
+{{ 1200.99 | currency : 'CAD' : 'symbol' }} <br />
+{{ 1200.99 | currency : 'CAD' : 'symbol-narrow' }} <br />
+
+<br /><br />
+
+{{ 1200.99 | currency : 'BRL' : true }} <br />
+{{ 1200.99 | currency : 'BRL' : false }} <br />
+
+<br /><br />
+
+{{ 1200.439 | currency : 'BRL' : true : '1.2-2' : 'pt-BR' }} <br />
+
+{{ 1200.439 | currency : 'USD' : true : undefined : 'en-US' }} <br />
+
+{{ 1200.439 | currency }} <br />
+
+{{ 1200.439 | currency : 'USD' }} <br />
