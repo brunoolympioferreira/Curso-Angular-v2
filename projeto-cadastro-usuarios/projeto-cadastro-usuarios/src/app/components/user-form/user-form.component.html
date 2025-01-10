@@ -4,7 +4,8 @@
             <div class="user-form__row">
                 <mat-form-field class="user-form__item user-form__item-100">
                     <mat-label>Nome:</mat-label>
-                    <input type="text" name="nome" matInput [(ngModel)]="userSelected.name" required>
+                    <input type="text" name="nome" matInput [(ngModel)]="userSelected.name"
+                        [ngModelOptions]="{updateOn: 'blur'}" required>
                     <mat-error>O <strong>Nome</strong> é obrigatório</mat-error>
                 </mat-form-field>
             </div>
@@ -12,20 +13,32 @@
                 <mat-form-field class="user-form__item user-form__item-50">
                     <mat-label>Usuário:</mat-label>
                     <input type="text" name="usuario" matInput [(ngModel)]="userSelected.username"
-                        #usernameControl="ngModel" required>
+                        #usernameControl="ngModel" [appCredentialsValidator]="'username'" required>
                     <mat-hint>O <strong>usuário</strong> será utilizado para o login.</mat-hint>
                     <mat-error *ngIf="usernameControl.hasError('required')">O <strong>Usuário</strong> é
-                        obrigatório.</mat-error>
+                        obrigatório.
+                    </mat-error>
+                    <mat-error
+                        *ngIf="usernameControl.hasError('invalidUsername') && !usernameControl.hasError('required')">Este
+                        <strong>usuário</strong> já está
+                        sendo utilizado
+                    </mat-error>
                 </mat-form-field>
                 <mat-form-field class="user-form__item user-form__item-50">
                     <mat-label>Email:</mat-label>
-                    <input type="text" name="email" matInput [(ngModel)]="userSelected.email" #emailControl="ngModel"
-                        appEmailPatternValidator required>
+                    <input type="text" name="email" matInput [(ngModel)]="userSelected.email"
+                        [ngModelOptions]="{updateOn: 'blur'}" #emailControl="ngModel" appEmailPatternValidator
+                        [appCredentialsValidator]="'email'" required>
                     <mat-error *ngIf="emailControl.hasError('required')">O <strong>Email</strong> é
-                        obrigatório.</mat-error>
+                        obrigatório.
+                    </mat-error>
                     <mat-error
                         *ngIf="emailControl.hasError('invalidEmailPattern') && !emailControl.hasError('required')">O
-                        <strong>Email</strong> é inválido</mat-error>
+                        <strong>Email</strong> é inválido
+                    </mat-error>
+                    <mat-error *ngIf="emailControl.hasError('invalidEmail') && !emailControl.hasError('required')">
+                        Este <strong>email</strong> já está sendo utilizado
+                    </mat-error>
                 </mat-form-field>
             </div>
         </form>
