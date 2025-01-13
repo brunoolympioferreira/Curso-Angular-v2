@@ -10,7 +10,7 @@ import { getPasswordStrenghtValue } from '../../utils/get-password-strenght-valu
   styleUrl: './user-form.component.scss'
 })
 export class UserFormComponent implements OnChanges {
-  passwordStrenghtValue = 0;
+  passwordStrengthValue = 0;
 
   @Input() genresList: GenresListResponse = [];
   @Input() statesList: StatesListResponse = [];
@@ -26,6 +26,6 @@ export class UserFormComponent implements OnChanges {
   }
 
   onPasswordChange(password: string) {
-    this.passwordStrenghtValue = getPasswordStrenghtValue(password);
+    this.passwordStrengthValue = getPasswordStrenghtValue(password);
   }
 }
