@@ -78,7 +78,7 @@
                 <mat-form-field class="user-form__item user-form__item-50">
                     <mat-label>Data de Nascimento:</mat-label>
                     <input matInput [matDatepicker]="picker" [min]="minDate" [max]="maxDate" name="dataNascimento"
-                        [ngModel]="dateValue" readonly required>
+                        [ngModel]="dateValue" (dateChange)="onDateChange($event)" readonly required>
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker>
                         <mat-datepicker-actions>

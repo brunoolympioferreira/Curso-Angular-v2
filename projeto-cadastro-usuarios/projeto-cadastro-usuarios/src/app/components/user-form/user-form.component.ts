@@ -4,6 +4,8 @@ import { StatesListResponse } from '../../types/states-list-response';
 import { IUser } from '../../interfaces/user/user.interface';
 import { getPasswordStrenghtValue } from '../../utils/get-password-strenght-value';
 import { convertPtBrDateToDateObj } from '../../utils/convert-pt-br-date-to-date-obj';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { convertDateObjToPtBrDate } from '../../utils/convert-date-obj-to-pt-br-date';
 
 @Component({
   selector: 'app-user-form',
@@ -37,6 +39,14 @@ export class UserFormComponent implements OnInit, OnChanges {
   onPasswordChange(password: string) {
     this.passwordStrengthValue = getPasswordStrenghtValue(password);
     this.setBirthDateToDatepicker(this.userSelected.birthDate);
+  }
+
+  onDateChange(event: MatDatepickerInputEvent<any, any>) {
+    if (!event.value) {
+      return;
+    }
+
+    this.userSelected.birthDate = convertDateObjToPtBrDate(event.value)
   }
 
   private setMinAndMaxDate() {
