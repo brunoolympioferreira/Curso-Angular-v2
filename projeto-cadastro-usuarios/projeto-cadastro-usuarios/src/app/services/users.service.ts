@@ -53,7 +53,7 @@ export class UsersService {
             setTimeout(() => {
                 observer.next(this.usersList);
                 observer.complete();
-            }, 3000);
+            }, 2000);
         });
     }
 }

@@ -34,7 +34,7 @@ export class GenresService {
             setTimeout(() => {
                 observer.next(this.genresList);
                 observer.complete();
-            }, 3000)
+            }, 2000)
         });
     }
 }

@@ -41,7 +41,7 @@ export class BrazilianStatesService {
             setTimeout(() => {
                 observer.next(this.statesList);
                 observer.complete;
-            }, 3000);
+            }, 2000);
         })
     }
 }
