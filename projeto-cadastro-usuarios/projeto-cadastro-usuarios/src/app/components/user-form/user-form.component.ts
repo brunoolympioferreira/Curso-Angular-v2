@@ -21,6 +21,9 @@ export class UserFormComponent implements OnInit, OnChanges {
 
   displayedColumns: string[] = ['title', 'band', 'genre', 'favorite'];
 
+  filteredGenresList: GenresListResponse = [];
+
+
   @Input() genresList: GenresListResponse = [];
   @Input() statesList: StatesListResponse = [];
   @Input() userSelected: IUser = {} as IUser;
@@ -36,6 +39,8 @@ export class UserFormComponent implements OnInit, OnChanges {
     if (USER_CHANGED) {
       this.onPasswordChange(this.userSelected.password);
     }
+
+    this.filteredGenresList = this.genresList;
   }
 
   onPasswordChange(password: string) {
@@ -49,6 +54,22 @@ export class UserFormComponent implements OnInit, OnChanges {
     }
 
     this.userSelected.birthDate = convertDateObjToPtBrDate(event.value)
+  }
+
+  displayFn(genreId: number) {
+    const genreFound = this.genresList.find(genre => genre.id === genreId);
+
+    return genreFound ? genreFound.description : '';
+  }
+
+  filterGenres(text: string) {
+    if (typeof text === 'number') return;
+
+    const searchTerm = text.toLowerCase();
+
+    this.filteredGenresList = this.genresList.filter(
+      genre => genre.description.toLowerCase().includes(searchTerm)
+    );
   }
 
   private setMinAndMaxDate() {
