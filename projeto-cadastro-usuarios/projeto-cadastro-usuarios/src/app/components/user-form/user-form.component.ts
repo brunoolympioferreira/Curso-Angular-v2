@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { GenresListResponse } from '../../types/genres-list-response';
 import { StatesListResponse } from '../../types/states-list-response';
 import { IUser } from '../../interfaces/user/user.interface';
@@ -6,6 +6,7 @@ import { getPasswordStrenghtValue } from '../../utils/get-password-strenght-valu
 import { convertPtBrDateToDateObj } from '../../utils/convert-pt-br-date-to-date-obj';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { convertDateObjToPtBrDate } from '../../utils/convert-date-obj-to-pt-br-date';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-user-form',
@@ -27,6 +28,12 @@ export class UserFormComponent implements OnInit, OnChanges {
   @Input() genresList: GenresListResponse = [];
   @Input() statesList: StatesListResponse = [];
   @Input() userSelected: IUser = {} as IUser;
+
+  @Output('onFormSubmit') onFormSubmitEmitt = new EventEmitter<void>();
+
+  constructor(
+    private readonly _el: ElementRef
+  ) { }
 
   ngOnInit() {
     this.setMinAndMaxDate();
@@ -74,6 +81,29 @@ export class UserFormComponent implements OnInit, OnChanges {
 
   isAnyCheckboxChecked(): boolean {
     return this.userSelected.musics.some(music => music.isFavorite);
+  }
+
+  onFormSubmit(form: NgForm) {
+    if (form.invalid) {
+      this.focusOnInvalidControl(form);
+
+      return;
+    }
+
+    console.log('VALIDO');
+    this.onFormSubmitEmitt.emit();
+  }
+
+  focusOnInvalidControl(form: NgForm) {
+    for (const control of Object.keys(form.controls)) {
+      if (form.controls[control].invalid) {
+        const invalidControl: HTMLElement = this._el.nativeElement.querySelector(`[name=${control}]`);
+
+        invalidControl.focus();
+
+        break;
+      }
+    }
   }
 
   private setMinAndMaxDate() {

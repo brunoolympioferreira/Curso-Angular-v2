@@ -1,6 +1,6 @@
 <mat-card>
     <mat-card-content>
-        <form class="user-form" #userForm="ngForm" appPasswordConfirmationValidator>
+        <form class="user-form" #userForm="ngForm" (ngSubmit)="onFormSubmit(userForm)" appPasswordConfirmationValidator>
 
             <!-- Campos de Cadastro -->
             <div class="user-form__row">
@@ -144,6 +144,7 @@
                                         <mat-option *ngFor="let genre of filteredGenresList" [value]="genre.id">{{
                                             genre.description }}</mat-option>
                                     </mat-autocomplete>
+                                    <mat-error>O <strong>Gênero</strong> é obrigatório</mat-error>
                                 </mat-form-field>
                             </td>
                         </ng-container>
@@ -158,12 +159,12 @@
 
                         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-
                     </table>
                 </div>
             </div>
-
+            <div class="user-form__row user-form__button-container">
+                <button type="submit" mat-raised-button color="primary">Salvar</button>
+            </div>
         </form>
     </mat-card-content>
 </mat-card>
